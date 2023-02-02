@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class OwnerRequest {
-    private String surname;
     private String name;
-    private String pseydonym;
+    private String surname;
+    private String pseudonym;
 }

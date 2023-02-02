@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.MongoId;
 public class Owner {
     @MongoId
     private String id;
-    private String surname;
     private String name;
-    private String pseydonym;
+    private String surname;
+    private String pseudonym;
 }

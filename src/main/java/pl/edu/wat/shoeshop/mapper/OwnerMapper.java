@@ -12,26 +12,22 @@ public class OwnerMapper {
         Owner owner = new Owner();
         owner.setName(ownerRequest.getName());
         owner.setSurname(ownerRequest.getSurname());
-        owner.setPseydonym(ownerRequest.getPseydonym());
+        owner.setPseudonym(ownerRequest.getPseudonym());
         fillOwnerRequest(owner, ownerRequest);
         return owner;
     }
 
     private void fillOwnerRequest(Owner owner, OwnerRequest ownerRequest) {
-//        owner.setRank(ownerRequest.getRank());
-        // empty for byte buddy
     }
 
     public OwnerResponse map(Owner owner) {
-        OwnerResponse ownerResponse = new OwnerResponse(owner.getId(), owner.getName(), owner.getSurname());
+        OwnerResponse ownerResponse = new OwnerResponse(owner.getId(), owner.getName(), owner.getSurname(), owner.getPseudonym());
         fillOwner(ownerResponse, owner);
         return ownerResponse;
     }
 
     private void fillOwner(OwnerResponse ownerResponse, Owner owner) {
-        //ownerResponse.setRank(owner.getRank());
+        //
         // empty for byte buddy
     }
-
-
 }

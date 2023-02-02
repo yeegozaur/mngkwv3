@@ -33,7 +33,7 @@ public class ShoeService {
         return new ShoeResponse(
                 shoe.getId(),
                 shoe.getName(),
-                new OwnerResponse(owner.getId(), owner.getName(), owner.getSurname()));
+                new OwnerResponse(owner.getId(), owner.getName(), owner.getSurname(), owner.getPseudonym()));
     }
 
     public ShoeResponse save(ShoeRequest shoeRequest) throws EntityNotFound {
@@ -50,7 +50,7 @@ public class ShoeService {
         return new ShoeResponse(
                 shoe.getId(),
                 shoe.getName(),
-                new OwnerResponse(owner.getId(), owner.getName(), owner.getSurname()));
+                new OwnerResponse(owner.getId(), owner.getName(), owner.getSurname(), owner.getPseudonym()));
     }
 
     public List<ShoeResponse> getAll() {
@@ -67,7 +67,8 @@ public class ShoeService {
             Object EntityNotFoundException;
             Owner owner = ownerRepository.findById(shoe.getOwnerId()).orElseThrow(EntityNotFound::new);
             return Optional.of(
-                    new ShoeResponse(shoe.getId(), shoe.getName(), new OwnerResponse(owner.getId(), owner.getName(), owner.getSurname()))
+                    new ShoeResponse(shoe.getId(), shoe.getName(), new OwnerResponse(owner.getId(), owner.getName(),
+                            owner.getSurname(), owner.getPseudonym()))
             );
         } catch (EntityNotFound e) {
             return Optional.empty();
@@ -87,7 +88,8 @@ public class ShoeService {
 
         shoe.setOwnerId(owner.getId());
         shoe = shoeRepository.save(shoe);
-        return new ShoeResponse(shoe.getId(),shoe.getName(),new OwnerResponse(owner.getId(),owner.getName(),owner.getSurname()));
+        return new ShoeResponse(shoe.getId(),shoe.getName(),new OwnerResponse(owner.getId(),owner.getName(),
+                owner.getSurname(), owner.getPseudonym()));
     }
 
     public void delete(String id) throws EntityNotFound {

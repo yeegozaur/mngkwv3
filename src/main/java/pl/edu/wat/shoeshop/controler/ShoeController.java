@@ -57,5 +57,4 @@ public class ShoeController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
 }

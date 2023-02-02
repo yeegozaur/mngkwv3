@@ -21,7 +21,7 @@ public class ScriptController {
     public ScriptController(ScriptService scriptService) {
         this.scriptService = scriptService;
     }
-
+    //var value = value.getValue()
     @PutMapping()
     public ResponseEntity<String> execScript() {
         String script= """
@@ -32,9 +32,13 @@ public class ScriptController {
                  function location_owner(){
                  
                  for(owner of ownerRepository.findAll()){   
+                 var location = owner.getLocation();
+                 if ( (location === null)  || location===""){
                  var location = "WAT";
                  owner.setLocation(location);
                  ownerRepository.save(owner);
+
+                 }
                  }
                  return ownerRepository.findAll();
                  }

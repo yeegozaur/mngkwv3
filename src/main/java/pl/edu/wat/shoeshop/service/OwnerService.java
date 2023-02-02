@@ -44,7 +44,7 @@ public class OwnerService {
                 .toList();
     }
 
-    public OwnerResponse update(String id, String name, String surname) throws EntityNotFound {
+    public OwnerResponse update(String id, String name, String surname, String pseudonym) throws EntityNotFound {
         Owner owner = ownerRepository.findById(id).orElseThrow(EntityNotFound::new);
         if(StringUtils.isNotBlank(name)) {
             owner.setName(name);
@@ -52,6 +52,10 @@ public class OwnerService {
 
         if(StringUtils.isNotBlank(surname)) {
             owner.setSurname(surname);
+        }
+
+        if(StringUtils.isNotBlank(pseudonym)) {
+            owner.setPseudonym(pseudonym);
         }
 
         owner = ownerRepository.save(owner);

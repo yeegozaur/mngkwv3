@@ -1,4 +1,8 @@
 {
-  "fieldName": "location",
-  "fieldType": "java.lang.String"
+  "fieldName1": "location",
+  "fieldType1": "java.lang.String",
+  "fieldName2": "town",
+  "fieldType2": "java.lang.String",
+  "fieldName3": "place",
+  "fieldType3": "java.lang.String"
 }

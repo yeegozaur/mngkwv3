@@ -54,14 +54,13 @@ public class OwnerController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<OwnerResponse> updateOwner(@PathVariable String id, @RequestParam(required = false) String name, @RequestParam(required = false) String surname) {
+    public ResponseEntity<OwnerResponse> updateOwner(@PathVariable String id,
+                                                     @RequestBody OwnerRequest r) {
         try {
-            return new ResponseEntity<>(ownerService.update(id, name, surname), HttpStatus.OK);
+            return new ResponseEntity<>(ownerService.update(id, r.getName(), r.getSurname(), r.getPseudonym()), HttpStatus.OK);
         } catch (EntityNotFound e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-
-
     }
 
     @DeleteMapping("{id}")
